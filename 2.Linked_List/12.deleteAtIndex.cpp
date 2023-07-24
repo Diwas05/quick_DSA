@@ -71,7 +71,7 @@ class LinkedList{
             length++;
         }
         //4.Deleting the last node
-        void deleteLast(int value){
+        void deleteLast(){
             //For empty list
             if(length==0){
                 return;
@@ -156,6 +156,20 @@ class LinkedList{
             return true;
 
         }
+        
+        //9.Delete at index
+        void deleteNode(int index){
+            if(index<0||index>length) return;
+            if(index==0) return deleteFirst();
+            if(index==length-1) return deleteLast();
+
+            Node* prev = get(index-1);
+            Node* temp = prev->next;
+
+            prev->next=temp->next;
+            delete temp;
+            length --;
+        }
         void getHead(){
             cout<<"Head: "<<head->value<<endl;
         }
@@ -193,8 +207,7 @@ int main(){
     myLinkedList->set(1,9);
     myLinkedList->print();
 
-    myLinkedList->insert(2,13);
+    myLinkedList->deleteNode(1);
     myLinkedList->print();
-
 
 }
