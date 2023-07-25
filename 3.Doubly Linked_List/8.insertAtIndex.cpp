@@ -139,17 +139,17 @@ class DoublyLinkedList{
             }
             return false;
         }
-        // 8. Insert at index
+        // 8.Insert at index
         bool insert(int index,int value){
-            if(index<0 || index>=length){
-                return false;
-            }
+            if(index<0 || index>length) return false;
+
             if(index == 0){
                 prepend(value);
                 return true;
             }
             if(index == length){
                 append(value);
+                return true;
             }
             Node* newNode = new Node(value);
             Node* before = get(index-1);
@@ -158,6 +158,7 @@ class DoublyLinkedList{
             newNode->next = after;
             before->next = newNode;
             after->prev = newNode;
+            length++;
         }
         void getHead(){
             cout<<"Head: "<<head->value<<endl;
@@ -180,19 +181,14 @@ int main(){
     myDLL->append(2);
     // myDLL->print();
 
-    myDLL->append(4);
+    myDLL->append(3);
     // myDLL->print();
 
     cout<<myDLL->get(1)->value<<endl;
     cout<<myDLL->get(2)->value<<endl;
 
     // changing index 3
-    // myDLL->set(3,4);
-    // myDLL->print();
-    cout<<"List before insertion:"<<endl;
-    myDLL->print();
-    cout<<"List after Insertion:"<<endl;
-    myDLL->insert(3,3);
+    myDLL->set(3,4);
     myDLL->print();
 
 
