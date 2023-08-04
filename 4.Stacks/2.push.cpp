@@ -35,6 +35,7 @@ class Stack{
         }
         //2.push Function
         void push(int value){
+            //NOTE:~ No need to write any extra conditions for empty stack because we don't have any bottom ponter here.
             Node* newNode = new Node(value);
             newNode->next = top;
             top = newNode;
